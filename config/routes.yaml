@@ -1,3 +1,40 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+product_list:
+  path: /api/products
+  controller: App\Controller\ApiProductController:indexAction
+  methods: [GET]
+
+product_list_sorted:
+  path: /api/products/{sortField}
+  controller: App\Controller\ApiProductController:indexAction
+  methods: [GET]
+  requirements:
+    sortField: 'id|name|price|currency' 
+
+product_new:
+  path: /api/product
+  controller: App\Controller\ApiProductController:newAction
+  methods: [POST]
+
+product_show:
+  path: /api/product/{id}
+  controller: App\Controller\ApiProductController:showAction
+  methods: [GET]
+  requirements:
+    id: '\d+'    
+
+product_delete:
+  path: /api/product/{id}
+  controller: App\Controller\ApiProductController:deleteAction
+  methods: [DELETE]
+  requirements:
+    id: '\d+' 
+
+product_update:
+  path: /api/product/{id}
+  controller: App\Controller\ApiProductController:updateAction
+  methods: [PATCH]
+  requirements:
+    id: '\d+'  
